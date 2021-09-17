@@ -1,0 +1,44 @@
+{
+	"name": "@cc12703m/grpc-web-protoc-gen-launch",
+	"version": "1.0.2",
+	"author": "morris",
+	"description": "Launch for Protoc gen grpc web",
+	"keywords": [
+		"grpc",
+		"grpc-web",
+		"protoc"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cc12703/grpc_web_protoc_gen_launch.git"
+	},
+	"bin": {
+		"grpc_web_node_protoc": "./bin/protoc.js"
+	},
+	"scripts": {
+		"install": "node-pre-gyp install",
+		"publish-bin": "node-pre-gyp-github publish --release",
+		"create-bin": " node create.js"
+	},
+	"dependencies": {
+		"@mapbox/node-pre-gyp": "^1.0.5"
+	},
+	"binary": {
+		"module_name": "grpc_web_protoc_gen_launch",
+		"host": "https://github.com/cc12703/grpc_web_protoc_gen_launch/releases/download/",
+		"remote_path": "{version}",
+		"package_name": "{platform}-{arch}.tar.gz",
+		"module_path": "bin"
+	},
+	"files": [
+		"index.js",
+		"bin/protoc.js"
+	],
+	"main": "index.js",
+	"devDependencies": {
+		"@cc12703m/node-pre-gyp-github": "^1.0.2",
+		"axios": "^0.21.4",
+		"compressing": "^1.5.1",
+		"fs-extra": "^10.0.0"
+	}
+}
