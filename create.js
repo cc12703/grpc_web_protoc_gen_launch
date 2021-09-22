@@ -37,9 +37,12 @@ async function createPackage(grpcWebVer, protocVer, pkgName, exeExt, outPath) {
 	const protocPkgData = Path.join(tempPath, 'protoc', 'pkg')
 	await Compress.zip.uncompress(protocPkg, protocPkgData)
 
+	const protocBin = Path.join(protocPkgData, 'bin', `protoc${exeExt}`)
+	File.chmodSync(protocBin, 0o777)	
+
 	const outStream = new Compress.tar.Stream()
 	outStream.addEntry(grpcWebBin, {relativePath: `bin/grpc_web_plugin${exeExt}`})
-	outStream.addEntry(Path.join(protocPkgData, 'bin', `protoc${exeExt}`), {relativePath: `bin/protoc${exeExt}`})
+	outStream.addEntry(protocBin, {relativePath: `bin/protoc${exeExt}`})
 	outStream.addEntry(Path.join(protocPkgData, 'include'), {ignoreBase: true, relativePath: 'bin/'})
 	await Compress.gzip.compressFile(outStream, Path.join(outPath, `${pkgName}.tar.gz`))
 }

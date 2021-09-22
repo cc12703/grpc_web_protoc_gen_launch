@@ -1,6 +1,6 @@
 {
 	"name": "@cc12703m/grpc-web-protoc-gen-launch",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": "morris",
 	"description": "Launch for Protoc gen grpc web",
 	"keywords": [
